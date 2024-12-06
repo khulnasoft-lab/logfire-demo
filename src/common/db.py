@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 import asyncpg
 import logfire
 from asyncpg.connection import Connection
-from fastapi import Depends, Request
+from readyapi import Depends, Request
 
 __all__ = ('Database',)
 
@@ -16,7 +16,7 @@ __all__ = ('Database',)
 @dataclass
 class _Database:
     """
-    Wrapper for asyncpg with some utilities and usable as a fastapi dependency.
+    Wrapper for asyncpg with some utilities and usable as a readyapi dependency.
     """
 
     _pool: asyncpg.Pool

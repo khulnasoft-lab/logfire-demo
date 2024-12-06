@@ -1,10 +1,10 @@
-from fastapi import APIRouter
-from fastapi.exceptions import HTTPException
 from fastui import AnyComponent, FastUI, events
 from fastui import components as c
 from fastui.components.display import DisplayLookup
 from fastui.forms import SelectSearchResponse
 from pydantic import BaseModel, Field
+from readyapi import APIRouter
+from readyapi.exceptions import HTTPException
 
 from ..common import AsyncClientDep, cities
 from ..common.db import Database

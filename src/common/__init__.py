@@ -2,9 +2,9 @@ import urllib.parse
 from typing import Annotated, Any
 
 from arq import ArqRedis
-from fastapi import Depends, Request
 from httpx import AsyncClient
 from pydantic_settings import BaseSettings
+from readyapi import Depends, Request
 
 
 def _get_http_client(request: Request) -> AsyncClient:

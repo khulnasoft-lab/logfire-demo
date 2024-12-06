@@ -8,12 +8,12 @@ from uuid import UUID
 
 import logfire
 import tiktoken
-from fastapi import APIRouter
 from fastui import AnyComponent, FastUI, events
 from fastui import components as c
 from fastui.forms import fastui_form
 from openai import AsyncOpenAI
 from pydantic import BaseModel, Field
+from readyapi import APIRouter
 from starlette.responses import StreamingResponse
 
 from ..common import AsyncClientDep

@@ -2,10 +2,10 @@ from __future__ import annotations as _annotations
 
 from time import time
 
-from fastapi import APIRouter
 from fastui import AnyComponent, FastUI
 from fastui import components as c
 from fastui.events import GoToEvent
+from readyapi import APIRouter
 
 from .shared import demo_page
 

@@ -6,10 +6,10 @@ from typing import Annotated
 
 import logfire
 from annotated_types import Ge, Gt, Le, Lt
-from fastapi import FastAPI, Header, Response
-from fastapi.responses import PlainTextResponse
 from httpx import AsyncClient
 from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
+from readyapi import Header, ReadyAPI, Response
+from readyapi.responses import PlainTextResponse
 
 from ..common import AsyncClientDep
 from .build_map import BuildMap
@@ -23,15 +23,15 @@ logfire.instrument_system_metrics()
 
 
 @asynccontextmanager
-async def lifespan(app_: FastAPI):
+async def lifespan(app_: ReadyAPI):
     async with AsyncExitStack() as stack:
         app_.state.httpx_client = httpx_client = await stack.enter_async_context(AsyncClient())
         HTTPXClientInstrumentor.instrument_client(httpx_client)
         yield
 
 
-app = FastAPI(lifespan=lifespan)
-logfire.instrument_fastapi(app)
+app = ReadyAPI(lifespan=lifespan)
+logfire.instrument_readyapi(app)
 
 
 @app.get('/', response_class=PlainTextResponse)
